@@ -60,35 +60,35 @@ namespace DSSGEDAdmin.Controllers
             }
         }
 
-        //[Route("")]
-        //[HttpPost]
-        //public JsonResult Post(DocTypeCustomField docTypeCustomField, string DBName)
-        //{
-        //    try
-        //    {
-        //        BLL_DocTypeCustomField.Add(docTypeCustomField, DBName);
-        //        return Json(new { success = true, message = "DocTypeCustomField ajouté avec success" });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
-        //    }
-        //}
+        [Route("")]
+        [HttpPost]
+        public JsonResult Post(DocTypeCustomField docTypeCustomField)
+        {
+            try
+            {
+                DAL_DocTypeCustomField.Add(docTypeCustomField);
+                return Json(new { success = true, message = "DocTypeCustomField ajouté avec success" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
+            }
+        }
 
-        //[Route("{id}")]
-        //[HttpPut]
-        //public JsonResult Put(int id, DocTypeCustomField docTypeCustomField, string DBName)
-        //{
-        //    try
-        //    {
-        //        BLL_DocTypeCustomField.Update(id, docTypeCustomField, DBName);
-        //        return Json(new { success = true, message = "DocTypeCustomField modifié avec succès" });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
-        //    }
-        //}
+        [Route("{id}")]
+        [HttpPut]
+        public JsonResult Put(int id, DocTypeCustomField docTypeCustomField)
+        {
+            try
+            {
+                DAL_DocTypeCustomField.Update(id, docTypeCustomField);
+                return Json(new { success = true, message = "DocTypeCustomField modifié avec succès" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
+            }
+        }
 
         //[Route("{id}")]
         //[HttpDelete]

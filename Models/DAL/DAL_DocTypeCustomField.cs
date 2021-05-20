@@ -12,38 +12,36 @@ namespace DSSGEDAdmin.Models.DAL
     public class DAL_DocTypeCustomField
     {
         // Add DocTypeCustomField
-        //public static void Add(DocTypeCustomField docTypeCustomField)
-        //{
-        //    using (SqlConnection con = DBConnection.GetConnection())
-        //    {
-        //        string StrSQL = "INSERT INTO DocTypeCustomField (Name, Type, AcceptNull,DefaultValue,IdDocumentType,ValueList) VALUES(@Name,@Type, @AcceptNull,@DefaultValue,@IdDocumentType,@ValueList)";
-        //        SqlCommand cmd = new SqlCommand(StrSQL, con);
-        //        cmd.Parameters.AddWithValue("@Name", docTypeCustomField.Name ?? (object)DBNull.Value);
-        //        cmd.Parameters.AddWithValue("@Type", docTypeCustomField.Type ?? (object)DBNull.Value);
-        //        cmd.Parameters.AddWithValue("@AcceptNull", docTypeCustomField.AcceptNull);
-        //        cmd.Parameters.AddWithValue("@DefaultValue", docTypeCustomField.DefaultValue ?? (object)DBNull.Value);
-        //        cmd.Parameters.AddWithValue("@IdDocumentType", docTypeCustomField.IdDocumentType);
-        //        cmd.Parameters.AddWithValue("@ValueList", docTypeCustomField.ValueList ?? (object)DBNull.Value);
-        //        DataBaseAccessUtilities.NonQueryRequest(cmd);
-        //    }
-        //}
-        //// Update DocTypeCustomField
-        //public static void Update(int id, DocTypeCustomField docTypeCustomField, string DBName)
-        //{
-        //    using (SqlConnection con = DBConnection.GetConnection(DBName))
-        //    {
-        //        string StrSQL = "UPDATE DocTypeCustomField SET Name=@Name, Type=@Type, AcceptNull=@AcceptNull,DefaultValue=@DefaultValue ,IdDocumentType=@IdDocumentType,ValueList=@ValueList WHERE Id = @CurId";
-        //        SqlCommand cmd = new SqlCommand(StrSQL, con);
-        //        cmd.Parameters.AddWithValue("@CurId", id);
-        //        cmd.Parameters.AddWithValue("@Name", docTypeCustomField.Name ?? (object)DBNull.Value);
-        //        cmd.Parameters.AddWithValue("@Type", docTypeCustomField.Type ?? (object)DBNull.Value);
-        //        cmd.Parameters.AddWithValue("@AcceptNull", docTypeCustomField.AcceptNull);
-        //        cmd.Parameters.AddWithValue("@DefaultValue", docTypeCustomField.DefaultValue ?? (object)DBNull.Value);
-        //        cmd.Parameters.AddWithValue("@IdDocumentType", docTypeCustomField.IdDocumentType);
-        //        cmd.Parameters.AddWithValue("@ValueList", docTypeCustomField.ValueList ?? (object)DBNull.Value);
-        //        DataBaseAccessUtilities.NonQueryRequest(cmd);
-        //    }
-        //}
+        public static void Add(DocTypeCustomField docTypeCustomField)
+        {
+            using (SqlConnection con = DBConnection.GetConnection())
+            {
+                string StrSQL = "INSERT INTO DocTypeCustomField (DocType, Cle,Valeur,TypeValeur,AccetpNull) VALUES(@DocType, @Cle,@Valeur,@TypeValeur,@AccetpNull)";
+                SqlCommand cmd = new SqlCommand(StrSQL, con);
+                cmd.Parameters.AddWithValue("@DocType", docTypeCustomField.DocTypeId );
+                cmd.Parameters.AddWithValue("@Cle", docTypeCustomField.Key ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Valeur", docTypeCustomField.Value);
+                cmd.Parameters.AddWithValue("@TypeValeur", docTypeCustomField.TypeValue ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@AccetpNull", docTypeCustomField.AcceptNull);
+                DataBaseAccessUtilities.NonQueryRequest(cmd);
+            }
+        }
+        // Update DocTypeCustomField
+        public static void Update(int id, DocTypeCustomField docTypeCustomField)
+        {
+            using (SqlConnection con = DBConnection.GetConnection())
+            {
+                string StrSQL = "UPDATE DocTypeCustomField SET DocType=@DocType, Cle=@Cle,Valeur=@Valeur,TypeValeur=@TypeValeur,AccetpNull=@AccetpNull WHERE Id = @CurId";
+                SqlCommand cmd = new SqlCommand(StrSQL, con);
+                cmd.Parameters.AddWithValue("@CurId", id);
+                cmd.Parameters.AddWithValue("@DocType", docTypeCustomField.DocTypeId);
+                cmd.Parameters.AddWithValue("@Cle", docTypeCustomField.Key ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Valeur", docTypeCustomField.Value);
+                cmd.Parameters.AddWithValue("@TypeValeur", docTypeCustomField.TypeValue ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@AccetpNull", docTypeCustomField.AcceptNull);
+                DataBaseAccessUtilities.NonQueryRequest(cmd);
+            }
+        }
         //// Delete DocTypeCustomField
         //public static void Delete(int id, string DBName)
         //{
