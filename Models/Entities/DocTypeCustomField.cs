@@ -8,13 +8,11 @@ namespace DSSGEDAdmin.Models.Entities
     public class DocTypeCustomField
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public bool AcceptNull { get; set; }
-        //public string MaxLength { get; set; }
-        public string DefaultValue { get; set; }
-        public int IdDocumentType { get; set; }
-        public string ValueList { get; set; }
+        public string Key { get; set; }
+        public string Value { get; set; }
+        public int DocTypeId { get; set; }
+        public string TypeValue { get; set; }
+        public string AcceptNull { get; set; }
 
     }
 }
