@@ -50,6 +50,16 @@ namespace DSSGEDAdmin.Models.DAL
                 DataBaseAccessUtilities.NonQueryRequest(command);
             }
         }
+
+        public static void DeleteByPerson(int id)
+        {
+            using (SqlConnection con = DBConnection.GetConnection())
+            {
+                string StrSQL = "DELETE FROM Folder WHERE IdPerson=" + id;
+                SqlCommand command = new SqlCommand(StrSQL, con);
+                DataBaseAccessUtilities.NonQueryRequest(command);
+            }
+        }
         // delete All Sub-Folder
         public static void DeleteGetChildsFolder(int pid)
         {

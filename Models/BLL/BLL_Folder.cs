@@ -21,6 +21,10 @@ namespace DSSGEDAdmin.Models.BLL
         {
             DAL_Folder.Delete(id);
         }
+        public static void DeleteByPerson(int id)
+        {
+            DAL_Folder.DeleteByPerson(id);
+        }
         public static void DeleteGetChildsFolder(int pid)
         {
             DAL_Folder.DeleteGetChildsFolder(pid);

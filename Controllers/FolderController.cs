@@ -103,5 +103,20 @@ namespace DSSGEDAdmin.Controllers
                 return Json(new { success = false, message = ex.Message });
             }
         }
+
+        [Route("DeleteByPerson/{id}")]
+        [HttpDelete]
+        public JsonResult DeleteByPerson(int id)
+        {
+            try
+            {
+                BLL_Folder.DeleteByPerson(id);
+                return Json(new { success = true, message = "Dossier supprimé avec succès" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
     }
 }
