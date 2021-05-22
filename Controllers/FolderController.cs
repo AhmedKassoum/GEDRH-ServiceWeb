@@ -104,7 +104,7 @@ namespace DSSGEDAdmin.Controllers
             }
         }
 
-        [Route("DeleteByPerson/{id}")]
+        [Route("DeleteFByPerson/{id}")]
         [HttpDelete]
         public JsonResult DeleteByPerson(int id)
         {
