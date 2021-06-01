@@ -18,14 +18,12 @@ namespace DSSGEDAdmin.Models.DAL
         {
             using (SqlConnection con = DBConnection.GetConnection())
             {
-                string StrSQL = "INSERT INTO Document (IdDocumentType, IdDocumentFolder, Reference, Title,MediaType,FileFormat,FilePath,HasHardCopy,AddingDate,Langage,Tags,Description,CustomFields) VALUES(@IdDocumentType,@IdDocumentFolder, @Reference,@Title,@MediaType,@FileFormat,@FilePath,@HasHardCopy,@AddingDate,@Langage,@Tags,@Description,@CustomFields)";
+                string StrSQL = "INSERT INTO Document (IdDocumentType, IdDocumentFolder, Reference, Title,FilePath,HasHardCopy,AddingDate,Langage,Tags,Description,CustomFields) VALUES(@IdDocumentType,@IdDocumentFolder, @Reference,@Title,@FilePath,@HasHardCopy,@AddingDate,@Langage,@Tags,@Description,@CustomFields)";
                 SqlCommand cmd = new SqlCommand(StrSQL, con);
                 cmd.Parameters.AddWithValue("@IdDocumentType", document.IdDocumentType);
                 cmd.Parameters.AddWithValue("@IdDocumentFolder", document.IdDocumentFolder);
                 cmd.Parameters.AddWithValue("@Reference", document.Reference);
                 cmd.Parameters.AddWithValue("@Title", document.Title ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@MediaType", document.MediaType ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@FileFormat", document.FileFormat ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@FilePath", document.FilePath ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@HasHardCopy", document.HasHardCopy ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@AddingDate", document.AddingDate);
@@ -41,13 +39,11 @@ namespace DSSGEDAdmin.Models.DAL
         {
             using (SqlConnection con = DBConnection.GetConnection())
             {
-                string StrSQL = "UPDATE Document SET Title=@Title,FilePath=@FilePath,MediaType=@MediaType,FileFormat=@FileFormat,HasHardCopy=@HasHardCopy,Langage=@Langage WHERE Id = @CurId";
+                string StrSQL = "UPDATE Document SET Title=@Title,FileFormat=@FileFormat,HasHardCopy=@HasHardCopy,Langage=@Langage WHERE Id = @CurId";
                 SqlCommand cmd = new SqlCommand(StrSQL, con);
                 cmd.Parameters.AddWithValue("@CurId", id);
                 cmd.Parameters.AddWithValue("@Title", document.Title ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@FilePath", document.FilePath ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@MediaType", document.MediaType ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@FileFormat", document.FileFormat ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@HasHardCopy", document.HasHardCopy ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Langage", document.Langage ?? (object)DBNull.Value);
                 DataBaseAccessUtilities.NonQueryRequest(cmd);
@@ -84,8 +80,6 @@ namespace DSSGEDAdmin.Models.DAL
                         document.IdDocumentFolder = Convert.ToInt32(rdr["IdDocumentFolder"]);
                         document.Reference = rdr["Reference"].ToString();
                         document.Title = rdr["Title"].ToString();
-                        document.MediaType = rdr["MediaType"].ToString();
-                        document.FileFormat = rdr["FileFormat"].ToString();
                         document.FilePath = rdr["FilePath"].ToString();
                         document.HasHardCopy = rdr["HasHardCopy"].ToString();
                         document.AddingDate = Convert.ToDateTime(rdr["AddingDate"]);
@@ -116,8 +110,6 @@ namespace DSSGEDAdmin.Models.DAL
             document.IdDocumentFolder = Convert.ToInt32(dataRow["IdDocumentFolder"]);
             document.Reference = dataRow["Reference"].ToString();
             document.Title = dataRow["Title"].ToString();
-            document.MediaType = dataRow["MediaType"].ToString();
-            document.FileFormat = dataRow["FileFormat"].ToString();
             document.FilePath = dataRow["FilePath"].ToString();
             document.HasHardCopy = dataRow["HasHardCopy"].ToString();
             document.AddingDate = Convert.ToDateTime(dataRow["AddingDate"]);

@@ -12,8 +12,6 @@ namespace DSSGEDAdmin.Models.Entities
         public int IdDocumentFolder { get; set; }
         public string Reference { get; set; }
         public string Title { get; set; }
-        public string MediaType { get; set; }
-        public string FileFormat { get; set; }
         public string FilePath { get; set; }
         public string HasHardCopy { get; set; }
         public DateTime AddingDate { get; set; }
