@@ -39,13 +39,14 @@ namespace DSSGEDAdmin.Models.DAL
         {
             using (SqlConnection con = DBConnection.GetConnection())
             {
-                string StrSQL = "UPDATE Document SET Title=@Title,FileFormat=@FileFormat,HasHardCopy=@HasHardCopy,Langage=@Langage WHERE Id = @CurId";
+                string StrSQL = "UPDATE Document SET Title=@Title,FilePath=@FilePath, AddingDate=@AddingDate ,HasHardCopy=@HasHardCopy,Langage=@Langage WHERE Id = @CurId";
                 SqlCommand cmd = new SqlCommand(StrSQL, con);
                 cmd.Parameters.AddWithValue("@CurId", id);
                 cmd.Parameters.AddWithValue("@Title", document.Title ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@FilePath", document.FilePath ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@HasHardCopy", document.HasHardCopy ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@Langage", document.Langage ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@AddingDate", document.AddingDate);
                 DataBaseAccessUtilities.NonQueryRequest(cmd);
             }
         }
