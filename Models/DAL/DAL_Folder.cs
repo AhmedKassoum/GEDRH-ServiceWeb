@@ -129,6 +129,36 @@ namespace DSSGEDAdmin.Models.DAL
             }
             return folder;
         }
+
+        public static int SelectByPersonId(int id)
+        {
+            int Identifiant=0;
+
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string StrSQL = "SELECT Id FROM Folder WHERE IdPerson = @Id";
+                    SqlCommand command = new SqlCommand(StrSQL, connection);
+                    command.Parameters.AddWithValue("@Id", id);
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    if (dataReader.Read())
+                    {
+                        Identifiant = Convert.ToInt32(dataReader["Id"]);
+                    }
+                }
+                catch (SqlException e)
+                {
+                    throw new MyException(e, "Database Error", e.Message, "DAL");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return Identifiant;
+        }
         // select all record of table folder
         public static List<Folder> SelectAll()
         {

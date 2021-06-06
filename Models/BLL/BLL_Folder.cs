@@ -33,6 +33,10 @@ namespace DSSGEDAdmin.Models.BLL
         {
             return DAL_Folder.SelectById(id);
         }
+        public static int SelectByPersonId(int id)
+        {
+            return DAL_Folder.SelectByPersonId(id);
+        }
         public static List<Folder> SelectAll()
         {
             return DAL_Folder.SelectAll();

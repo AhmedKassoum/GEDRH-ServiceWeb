@@ -60,6 +60,15 @@ namespace DSSGEDAdmin.Models.DAL
                 DataBaseAccessUtilities.NonQueryRequest(command);
             }
         }
+        public static void DeleteByDocument(int id)
+        {
+            using (SqlConnection con = DBConnection.GetConnection())
+            {
+                string StrSQL = "DELETE FROM Document WHERE IdDocumentFolder=" + id;
+                SqlCommand command = new SqlCommand(StrSQL, con);
+                DataBaseAccessUtilities.NonQueryRequest(command);
+            }
+        }
         // select one record of table document
         public static Document SelectById(int id)
         {

@@ -149,5 +149,20 @@ namespace DSSGEDAdmin.Controllers
                 return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
             }
         }
+
+        [Route("DeleteByDoc/{id}")]
+        [HttpDelete]
+        public JsonResult DeleteByDoc(int id)
+        {
+            try
+            {
+                BLL_Document.Delete(id);
+                return Json(new { success = true, message = "Document supprimé avec succès" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
+            }
+        }
     }
 }

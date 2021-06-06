@@ -59,6 +59,21 @@ namespace DSSGEDAdmin.Controllers
             }
         }
 
+        [Route("GetByPersonId/{id}")]
+        [HttpGet]
+        public JsonResult GetFolder(int id)
+        {
+            try
+            {
+                int idFolder = BLL_Folder.SelectByPersonId(id);
+                return Json(new { success = true, message = "Id trouve", data = idFolder });
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, message = e.Message });
+            }
+        }
+
         [Route("")]
         [HttpPost]
         public JsonResult Post(Folder folder)

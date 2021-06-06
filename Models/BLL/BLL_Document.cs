@@ -21,6 +21,10 @@ namespace DSSGEDAdmin.Models.BLL
         {
             DAL_Document.Delete(id);
         }
+        public static void DeleteByDocument(int id)
+        {
+            DAL_Document.Delete(id);
+        }
         public static Document SelectById(int id)
         {
             return DAL_Document.SelectById(id);
