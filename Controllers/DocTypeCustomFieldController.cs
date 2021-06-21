@@ -90,19 +90,19 @@ namespace DSSGEDAdmin.Controllers
             }
         }
 
-        //[Route("{id}")]
-        //[HttpDelete]
-        //public JsonResult Delete(int id, string DBName)
-        //{
-        //    try
-        //    {
-        //        BLL_DocTypeCustomField.Delete(id, DBName);
-        //        return Json(new { success = true, message = "DocTypeCustomField supprimé avec succès" });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
-        //    }
-        //}
+        [Route("{id}")]
+        [HttpDelete]
+        public JsonResult Delete(int id)
+        {
+            try
+            {
+                BLL_DocTypeCustomField.Delete(id);
+                return Json(new { success = true, message = "DocTypeCustomField supprimé avec succès" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
+            }
+        }
     }
 }

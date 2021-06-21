@@ -170,6 +170,33 @@ namespace DSSGEDAdmin.Models.DAL
             return GetListFromDataTable(dataTable);
         }
 
+        public static List<Document> SelectByDocType(int entityKey)
+        {
+            List<Document> lstDocument = new List<Document>();
+            DataTable dataTable;
+            using (SqlConnection connection = DBConnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    string StrSQL = "SELECT * FROM Document WHERE IdDocumentType = @entityKey";
+                    SqlCommand command = new SqlCommand(StrSQL, connection);
+                    command.Parameters.AddWithValue("@entityKey", entityKey);
+                    dataTable = DataBaseAccessUtilities.SelectRequest(command);
+                }
+                catch (SqlException e)
+                {
+                    throw new MyException(e, "Database Error", e.Message, "DAL");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+            return GetListFromDataTable(dataTable);
+        }
+
         public static List<Document> SelectByPersonId(int Id)
         {
             List<Document> lstDocument = new List<Document>();

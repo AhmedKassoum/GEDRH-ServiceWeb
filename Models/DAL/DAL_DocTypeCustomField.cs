@@ -42,17 +42,17 @@ namespace DSSGEDAdmin.Models.DAL
                 DataBaseAccessUtilities.NonQueryRequest(cmd);
             }
         }
-        //// Delete DocTypeCustomField
-        //public static void Delete(int id, string DBName)
-        //{
-        //    using (SqlConnection con = DBConnection.GetConnection(DBName))
-        //    {
-        //        string StrSQL = "DELETE FROM DocTypeCustomField WHERE Id=" + id;
-        //        SqlCommand command = new SqlCommand(StrSQL, con);
-        //        DataBaseAccessUtilities.NonQueryRequest(command);
-        //    }
-        //}
-        // select one record of table DocTypeCustomField
+        // Delete DocTypeCustomField
+        public static void Delete(int id)
+        {
+            using (SqlConnection con = DBConnection.GetConnection())
+            {
+                string StrSQL = "DELETE FROM DocTypeCustomField WHERE Id=" + id;
+                SqlCommand command = new SqlCommand(StrSQL, con);
+                DataBaseAccessUtilities.NonQueryRequest(command);
+            }
+        }
+        //select one record of table DocTypeCustomField
         public static DocTypeCustomField SelectById(int id)
         {
             DocTypeCustomField docTypeCustomField = new DocTypeCustomField();

@@ -113,6 +113,8 @@ namespace DSSGEDAdmin.Models.DAL
                         documentType.Id = Convert.ToInt32(dataReader["Id"]);
                         documentType.Name = dataReader["Name"].ToString();
                         documentType.Description = dataReader["Description"].ToString();
+                        documentType.tabDocuments = new List<Document>();
+                        documentType.tabDocuments = DAL_Document.SelectByDocType(documentType.Id);
                         lstDocumentType.Add(documentType);
                     }
                 }

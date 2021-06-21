@@ -12,6 +12,7 @@ namespace DSSGEDAdmin.Models.Entities
         public string Name { get; set; }
         //public string DocTypePrefix { get; set; }
         public string Description { get; set; }
+        public List<Document> tabDocuments { get; set; }
         //public string ControlDuplication { get; set; }
     }
 }
