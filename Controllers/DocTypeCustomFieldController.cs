@@ -104,5 +104,20 @@ namespace DSSGEDAdmin.Controllers
                 return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
             }
         }
+
+        [Route("DeleteByDType/{id}")]
+        [HttpDelete]
+        public JsonResult DeleteByDType(int id)
+        {
+            try
+            {
+                BLL_DocTypeCustomField.DeleteByDType(id);
+                return Json(new { success = true, message = "DocTypeCustomField supprimé avec succès" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Erreur serveur: " + ex.Message });
+            }
+        }
     }
 }

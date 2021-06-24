@@ -21,6 +21,10 @@ namespace DSSGEDAdmin.Models.BLL
         {
             DAL_DocTypeCustomField.Delete(id);
         }
+        public static void DeleteByDType(int id)
+        {
+            DAL_DocTypeCustomField.DeleteByDType(id);
+        }
         public static DocTypeCustomField SelectById(int id)
         {
             return DAL_DocTypeCustomField.SelectById(id);

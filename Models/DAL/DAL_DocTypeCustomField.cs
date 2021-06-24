@@ -52,6 +52,16 @@ namespace DSSGEDAdmin.Models.DAL
                 DataBaseAccessUtilities.NonQueryRequest(command);
             }
         }
+
+        public static void DeleteByDType(int id)
+        {
+            using (SqlConnection con = DBConnection.GetConnection())
+            {
+                string StrSQL = "DELETE FROM DocTypeCustomField WHERE DocType=" + id;
+                SqlCommand command = new SqlCommand(StrSQL, con);
+                DataBaseAccessUtilities.NonQueryRequest(command);
+            }
+        }
         //select one record of table DocTypeCustomField
         public static DocTypeCustomField SelectById(int id)
         {
